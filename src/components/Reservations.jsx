@@ -20,7 +20,7 @@ const Reservations = ({ room = 'laundry' }) => {
   ];
   
   return (
-    <Container component="main" maxWidth="md" sx={{ my: isMobile ? 7 : 0, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', p: 1 }}>
+    <Container component="main" maxWidth="md" sx={{ mt: isMobile ? 7 : 0, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', p: 1 }}>
       <Typography variant='h6'>11 February 2024</Typography>
       <Divider />
       <List sx={{ height: '400px', overflow: 'auto', mt: 1 }}>

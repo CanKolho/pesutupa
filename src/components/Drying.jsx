@@ -9,7 +9,7 @@ import Reservations from './Reservations';
 const Drying = () => {
   return (
     <>
-      <Container component="main" maxWidth="md" sx={{ mt: 15 }}>
+      <Container component="main" maxWidth="md" sx={{ my: 15 }}>
         <Grid container spacing={1}>
           <Grid item xs={12} sm={12} md={5}><CustomDatepicker /></Grid>
           <Grid item xs={12} sm={12} md={7}>
