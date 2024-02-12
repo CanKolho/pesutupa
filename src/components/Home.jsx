@@ -1,13 +1,15 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import img from '../assets/large.jpg';
 import Features from './Features';
-import Typed from 'typed.js';
+//import Typed from 'typed.js';
 import { Link } from 'react-router-dom';
-import { Typography } from '@mui/material';
+//import { Typography } from '@mui/material';
+import { useUser } from '../context/userContext';
 
 const Home = () => {
+  const { user, logout } = useUser();
+
   //const el = React.useRef(null);
   //
   //React.useEffect(() => {
@@ -43,9 +45,13 @@ const Home = () => {
           alignSelf: 'flex-end'
         }}>
 
-          <Link to='/login' style={{ textDecoration: 'none' }}>
-            <Button variant='contained' size='large'>sign up</Button>
-          </Link>
+        {!user ?
+            <Link to='/signin' style={{ textDecoration: 'none' }}>
+              <Button variant='contained' size='large'>sign in</Button>
+            </Link>
+          :
+            <Button variant='contained' size='large' color='warning' onClick={logout}>sign out</Button>
+        }   
         </Box>
       </Box>
       <Features />

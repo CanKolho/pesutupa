@@ -11,28 +11,46 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Tooltip from '@mui/material/Tooltip';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
-
-const navItems = ['Home','Reservations', 'Laundry', 'Drying'];
+import { useNavigate } from 'react-router-dom'
+import { useUser } from '../context/userContext';
 
 const Navigation = () => {
   const theme = useTheme();
   const location = useLocation();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const handleDrawerOpen = () => setDrawerOpen((prevState) => !prevState);
+  const navigate = useNavigate();
+  const { user, logout } = useUser();
+  
+  const navItems = user 
+    ? ['Home','Reservations', 'Laundry', 'Drying']
+    : ['Home', 'Sign In', 'Sign Up'];
+
+  const handleSignOut = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.log('Sign out error:', error);
+    }
+  }
 
   const drawer = (
     <Box onClick={handleDrawerOpen} sx={{ textAlign: 'center' }}>
       <List>
         {navItems.map((item) => {
-          const to = item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase()}`;
+          const to = item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`;
           const isActive = location.pathname === to;
           return (
             <Link key={item} to={item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase()}`} style={{ textDecoration: 'none', color: 'black' }}>
               <ListItem disablePadding>
-                <ListItemButton sx={{ 
+                <ListItemButton 
+                sx={{
                   textAlign: 'center',
                   bgcolor: isActive ? 'primary.light' : 'transparent',
                   transition: 'background-color 0.2s ease-in-out',
@@ -43,6 +61,14 @@ const Navigation = () => {
             </Link>
           )
         })}
+
+          {user &&
+            <Button sx={{ color: 'black' }} onClick={() => handleSignOut()}>
+              <Tooltip title='logout' placement="right">
+                <LogoutIcon />
+              </Tooltip>
+            </Button>
+          }
       </List>
     </Box>
   );
@@ -71,7 +97,7 @@ const Navigation = () => {
 
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               {navItems.map((item, index) => {
-                const to = item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase()}`;
+                const to = item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`;
                 const isActive = location.pathname === to;
                 return (
                   <Link key={index} to={to} style={{ textDecoration: 'none' }}>
@@ -87,6 +113,14 @@ const Navigation = () => {
                 );
               })}
             </Box>
+
+            {user &&
+            <IconButton sx={{ color: 'white', display: { xs: 'none', md: 'block' }}} onClick={() => handleSignOut()}>
+              <Tooltip title='logout' placement="right">
+                <LogoutIcon />
+              </Tooltip>
+            </IconButton>
+            }
 
             <IconButton 
               onClick={handleDrawerOpen}
