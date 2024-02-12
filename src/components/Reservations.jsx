@@ -20,13 +20,13 @@ const Reservations = ({ room = 'laundry' }) => {
   ];
   
   return (
-    <Container component="main" maxWidth="md" sx={{ mt: isMobile ? 7 : 0, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', p: 1 }}>
+    <Container component="main" maxWidth="md" sx={{ mt: isMobile ? 7 : 0, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', p: 1, borderRadius: 3 }}>
       <Typography variant='h6'>11 February 2024</Typography>
       <Divider />
       <List sx={{ height: '400px', overflow: 'auto', mt: 1 }}>
       {reservations.length > 0 ? (
         reservations.map((reservation, index) => (
-          <ListItem key={index} sx={{ backgroundColor: index % 2 === 0 ? color : 'transparent' }}>
+          <ListItem key={index} sx={{ backgroundColor: color, borderRadius: 3, mt: 1  }}>
             <ListItemText primary={reservation.room} secondary={reservation.time} />
           </ListItem>
         ))
