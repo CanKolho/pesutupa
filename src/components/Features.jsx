@@ -1,15 +1,15 @@
-import DevicesIcon from '@mui/icons-material/Devices';
-import LanguageIcon from '@mui/icons-material/Language';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { useMediaQuery } from '@mui/material';
+import DevicesIcon from '@mui/icons-material/Devices'
+import LanguageIcon from '@mui/icons-material/Language'
+import TrendingUpIcon from '@mui/icons-material/TrendingUp'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { useMediaQuery } from '@mui/material'
 
 const Features = () => {
-  const isMobile = useMediaQuery('(max-width: 800px)');
+  const isMobile = useMediaQuery('(max-width: 800px)')
 
   const features = [
-    
+
     {
       icon: <DevicesIcon color='primary' sx={{ fontSize: '3rem' }}/>,
       title: 'Responsive',
@@ -25,7 +25,7 @@ const Features = () => {
       title: 'Easy to use',
       description: 'Manage reservations easily!'
     }
-  ];
+  ]
 
   return (
     <Box sx={{
@@ -37,11 +37,11 @@ const Features = () => {
       mt: 7
     }}>
       {features.map((feature, index) => (
-        <Box key={index} sx={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          justifyContent: 'center', 
-          alignItems: 'center', 
+        <Box key={index} sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
           gap: 1,
           padding: 2,
           maxWidth: 300,
@@ -53,7 +53,7 @@ const Features = () => {
         </Box>
       ))}
     </Box>
-  );
-};
+  )
+}
 
-export default Features;
+export default Features

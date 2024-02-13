@@ -1,8 +1,8 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import ListOfOwnReservations from './ListOfOwnReservations';
+import * as React from 'react'
+import Grid from '@mui/material/Grid'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import ListOfOwnReservations from './ListOfOwnReservations'
 
 const UserReservations = () => {
   const reservations = [
@@ -11,7 +11,7 @@ const UserReservations = () => {
     { date: '14.2.2024', time: '12:00 - 13:00' },
     { date: '15.2.2024', time: '13:00 - 14:00' },
     { date: '16.2.2024', time: '14:00 - 15:00' },
-  ];
+  ]
 
   return (
     <Container component="main" maxWidth="md" sx={{ my: 15 }}>
@@ -20,8 +20,8 @@ const UserReservations = () => {
         <Grid item xs={12} sm={6}><ListOfOwnReservations reservations={reservations} room='Laundry' /></Grid>
         <Grid item xs={12} sm={6}><ListOfOwnReservations reservations={reservations} room='Drying' /></Grid>
       </Grid>
-    </Container> 
-  );
+    </Container>
+  )
 }
 
-export default UserReservations;
+export default UserReservations

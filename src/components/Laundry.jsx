@@ -1,10 +1,10 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
-import CustomDatepicker from './CustomDatepicker';
-import Reservations from './Reservations';
+import * as React from 'react'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Grid from '@mui/material/Grid'
+import Container from '@mui/material/Container'
+import CustomDatepicker from './CustomDatepicker'
+import Reservations from './Reservations'
 
 const Laundry = () => {
   return (
@@ -24,9 +24,9 @@ const Laundry = () => {
         </Grid>
         <Reservations/>
       </Container>
-      
+
     </>
-  );
+  )
 }
 
-export default Laundry;
+export default Laundry
