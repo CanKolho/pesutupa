@@ -18,8 +18,10 @@ const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(initLaundryReservations(new Date()))
-    dispatch(initDryingReservations(new Date()))
+    if (user) {
+      dispatch(initLaundryReservations(new Date()))
+      dispatch(initDryingReservations(new Date()))
+    }
   }, [user, dispatch])
 
   return (
