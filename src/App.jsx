@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Laundry from './components/Laundry'
 import Drying from './components/Drying'
@@ -5,13 +6,21 @@ import Home from './components/Home'
 import Navigation from './components/Navigation'
 import UserReservations from './components/UserReservations'
 import Login from './components/Login'
-import '@fontsource/roboto/300.css'
 import { Navigate } from 'react-router-dom'
 import { useUser } from './context/userContext'
+import { useDispatch } from 'react-redux'
+import { initLaundryReservations } from './reducers/laundryReducer'
+import { initDryingReservations } from './reducers/dryingReducer'
+import '@fontsource/roboto/300.css'
 
 const App = () => {
   const { user } = useUser()
-  console.log('User from app:', user)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(initLaundryReservations(new Date()))
+    dispatch(initDryingReservations(new Date()))
+  }, [user, dispatch])
 
   return (
     <>
