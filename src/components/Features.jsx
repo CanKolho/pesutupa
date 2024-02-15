@@ -1,7 +1,7 @@
 import DevicesIcon from '@mui/icons-material/Devices'
 import LanguageIcon from '@mui/icons-material/Language'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
-import Box from '@mui/material/Box'
+import { Box } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { useMediaQuery } from '@mui/material'
 

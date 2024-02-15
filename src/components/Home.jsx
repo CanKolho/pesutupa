@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box'
+import { Box } from '@mui/material'
 import Button from '@mui/material/Button'
 import img from '../assets/large.jpg'
 import Features from './Features'
