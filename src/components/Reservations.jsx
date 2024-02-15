@@ -3,7 +3,7 @@ import Container from '@mui/material/Container'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
-import { Divider } from '@mui/material'
+import Divider from '@mui/material/Divider'
 import PersonIcon from '@mui/icons-material/Person';
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
