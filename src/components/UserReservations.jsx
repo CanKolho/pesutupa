@@ -12,11 +12,11 @@ import { filterAndSortReservationsByUID } from '../utils'
 
 const UserReservations = () => {
   const { user } = useUser()
-  const dispatch = useDispatch()
   const uid = user.currentUser.uid
   const laundryReservations = filterAndSortReservationsByUID(useSelector(state => state.laundry), uid)
   const dryingReservations = filterAndSortReservationsByUID(useSelector(state => state.drying), uid)
-
+  const dispatch = useDispatch()
+  
   React.useEffect(() => {
     dispatch(initLaundryReservations(new Date()))
     dispatch(initDryingReservations(new Date()))

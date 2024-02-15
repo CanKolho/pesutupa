@@ -8,11 +8,22 @@ import IconButton from '@mui/material/IconButton'
 import DeleteIcon from '@mui/icons-material/Delete'
 import Divider from '@mui/material/Divider'
 import Typography from '@mui/material/Typography'
+import { useDispatch } from 'react-redux'
+import { deleteLaundryReservation } from '../reducers/laundryReducer'
+import { deleteDryingReservation } from '../reducers/dryingReducer'
 
-const ListOfOwnReservations = ({ reservations, room = 'Laundry' }) => {
-  const color = room.toLowerCase() === 'laundry' ? 'rgba(173, 216, 230, 0.4)' : 'rgba(255, 228, 181, 0.4)'
+const ListOfOwnReservations = ({ reservations, room }) => {
+  const isLaundryRoom = room.toLowerCase() === 'laundry'
+  const color = isLaundryRoom ? 'rgba(173, 216, 230, 0.4)' : 'rgba(255, 228, 181, 0.4)'
   const reservationsExists = reservations.length > 0
   const [opacity, setOpacity] = useState(0);
+  const dispatch = useDispatch()
+
+  const handleDelete = (id) => {
+    isLaundryRoom 
+    ? dispatch(deleteLaundryReservation(id)) 
+    : dispatch(deleteDryingReservation(id))
+  }
 
   useEffect(() => {
     setOpacity(1);
@@ -30,7 +41,7 @@ const ListOfOwnReservations = ({ reservations, room = 'Laundry' }) => {
             <ListItem key={index} sx={{ backgroundColor: color, borderRadius: 3, mt: 1, opacity: opacity, transition: `opacity 500ms ${index * 100}ms` }}>
               <ListItemText primary={date} secondary={`${reservation.start} - ${reservation.end}`} />
               <ListItemIcon>
-                <IconButton edge="end" aria-label="delete" size='small'>
+                <IconButton edge="end" aria-label="delete" size='small' onClick={() => handleDelete(reservation.id)}>
                   <DeleteIcon />
                 </IconButton>
               </ListItemIcon>

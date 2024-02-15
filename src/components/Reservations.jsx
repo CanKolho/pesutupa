@@ -14,22 +14,18 @@ import { useSelector } from 'react-redux'
 import { initLaundryReservations } from '../reducers/laundryReducer'
 import { initDryingReservations } from '../reducers/dryingReducer'
 import { filterAndSortReservationsByDate } from '../utils'
-import { useUser } from '../context/userContext'
 
-const Reservations = ({ room = 'laundry', date }) => {
+const Reservations = ({ room, date, user }) => {
   const isMobile = useMediaQuery('(max-width: 900px)')
   const [opacity, setOpacity] = useState(0)
   const dispatch = useDispatch()
-  const color = room === 'laundry' ? 'rgba(173, 216, 230, 0.5)' : 'rgba(255, 228, 181, 0.5)'
-  const laundryReservations = useSelector(state => state.laundry)
-  const dryingReservations = useSelector(state => state.drying)
-  const { user } = useUser()
-
+  const isLaundryRoom = room.toLowerCase() === 'laundry'
+  const color = isLaundryRoom ? 'rgba(173, 216, 230, 0.5)' : 'rgba(255, 228, 181, 0.5)'
+  const reservations = isLaundryRoom ? useSelector(state => state.laundry) : useSelector(state => state.drying)
+  
   const dateToCompare = new Date(date);
-  const filteredAndSorted = room === 'laundry'
-    ? filterAndSortReservationsByDate(laundryReservations, dateToCompare)
-    : filterAndSortReservationsByDate(dryingReservations, dateToCompare)
-
+  const filteredAndSorted = filterAndSortReservationsByDate(reservations, dateToCompare)
+ 
   useEffect(() => {
     setOpacity(0)
     const timer = setTimeout(() => setOpacity(1), 100)
@@ -37,7 +33,7 @@ const Reservations = ({ room = 'laundry', date }) => {
   }, [date])
 
   useEffect(() => {
-    room === 'laundry' 
+    isLaundryRoom
     ? dispatch(initLaundryReservations(date.toDate())) 
     : dispatch(initDryingReservations(date.toDate()))
   }, [date, dispatch])

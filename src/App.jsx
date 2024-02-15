@@ -1,8 +1,7 @@
 import { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Laundry from './components/Laundry'
-import Drying from './components/Drying'
 import Home from './components/Home'
+import Room from './components/Room'
 import Navigation from './components/Navigation'
 import UserReservations from './components/UserReservations'
 import Login from './components/Login'
@@ -29,8 +28,8 @@ const App = () => {
       <Navigation />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/laundry' element={user ? <Laundry /> : <Navigate to={'/signin'} replace />} />
-        <Route path='/drying' element={user ? <Drying /> :  <Navigate to={'/signin'} replace />} />
+        <Route path='/laundry' element={user ? <Room room='laundry' /> : <Navigate to={'/signin'} replace />} />
+        <Route path='/drying' element={user ? <Room room='drying'/> :  <Navigate to={'/signin'} replace />} />
         <Route path='/reservations' element={user ? <UserReservations /> : <Navigate to={'/signin'} replace />} />
         <Route path='/signin' element={<Login />} />
         <Route path='/signup' element={<Login />} />

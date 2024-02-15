@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { db } from '../config/firebase'
-import { collection, query, where, getDocs, orderBy, Timestamp } from 'firebase/firestore'
+import { collection, query, where, getDocs, orderBy, Timestamp, addDoc, deleteDoc, doc } from 'firebase/firestore'
 
 const dryingSlice = createSlice({
   name: 'drying',
@@ -43,5 +43,30 @@ export const initDryingReservations = (date) => {
   }
 }
 
+export const addDryingReservation = (reservation) => {
+  return async dispatch => {
+    try {
+      const firebaseValidDoc = { ...reservation, date: Timestamp.fromDate(new Date(reservation.date)) }
+      await addDoc(collection(db, 'dryingReservations'), firebaseValidDoc)
+      dispatch(initDryingReservations(new Date(reservation.date)))
+    }
+    catch (error) {
+      console.error('Error adding drying reservation:', error)
+    }
+  }
+}
+
+export const deleteDryingReservation = (id) => {
+  return async dispatch => {
+    try {
+      const res = doc(db, 'dryingReservations', id)
+      await deleteDoc(res)
+      dispatch(initDryingReservations(new Date()))
+    }
+    catch (error) {
+      console.error('Error deleting drying reservation:', error)
+    }
+  }
+}
 
 export default dryingSlice.reducer

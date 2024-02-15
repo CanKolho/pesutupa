@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { db } from '../config/firebase'
-import { collection, query, where, getDocs, orderBy, Timestamp } from 'firebase/firestore'
+import { collection, query, where, getDocs, orderBy, Timestamp, addDoc, deleteDoc, doc } from 'firebase/firestore'
 
 const laundrySlice = createSlice({
   name: 'laundry',
@@ -39,6 +39,32 @@ export const initLaundryReservations = (date) => {
     }
     catch (error) {
       console.error('Error initializing laundry reservations:', error)
+    }
+  }
+}
+
+export const addLaundryReservation = (reservation) => {
+  return async dispatch => {
+    try {
+      const firebaseValidDoc = { ...reservation, date: Timestamp.fromDate(new Date(reservation.date)) }
+      await addDoc(collection(db, 'laundryReservations'), firebaseValidDoc)
+      dispatch(initLaundryReservations(new Date(reservation.date)))
+    }
+    catch (error) {
+      console.error('Error adding laundry reservation:', error)
+    }
+  }
+}
+
+export const deleteLaundryReservation = (id) => {
+  return async dispatch => {
+    try {
+      const res = doc(db, 'laundryReservations', id)
+      await deleteDoc(res)
+      dispatch(initLaundryReservations(new Date()))
+    }
+    catch (error) {
+      console.error('Error deleting laundry reservation:', error)
     }
   }
 }
