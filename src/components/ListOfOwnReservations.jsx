@@ -16,18 +16,18 @@ const ListOfOwnReservations = ({ reservations, room }) => {
   const isLaundryRoom = room.toLowerCase() === 'laundry'
   const color = isLaundryRoom ? 'rgba(173, 216, 230, 0.4)' : 'rgba(255, 228, 181, 0.4)'
   const reservationsExists = reservations.length > 0
-  const [opacity, setOpacity] = useState(0);
+  const [opacity, setOpacity] = useState(0)
   const dispatch = useDispatch()
 
   const handleDelete = (id) => {
-    isLaundryRoom 
-    ? dispatch(deleteLaundryReservation(id)) 
-    : dispatch(deleteDryingReservation(id))
+    isLaundryRoom
+      ? dispatch(deleteLaundryReservation(id))
+      : dispatch(deleteDryingReservation(id))
   }
 
   useEffect(() => {
-    setOpacity(1);
-  }, []);
+    setOpacity(1)
+  }, [])
 
   return (
     <Container component="section" maxWidth="sm" sx={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', p: 1, borderRadius: 3 }}>
@@ -38,14 +38,14 @@ const ListOfOwnReservations = ({ reservations, room }) => {
           reservations.map((reservation, index) => {
             const date = new Date(reservation.date).toLocaleDateString().replace(/\//g, '.')
             return (
-            <ListItem key={index} sx={{ backgroundColor: color, borderRadius: 3, mt: 1, opacity: opacity, transition: `opacity 500ms ${index * 100}ms` }}>
-              <ListItemText primary={date} secondary={`${reservation.start} - ${reservation.end}`} />
-              <ListItemIcon>
-                <IconButton edge="end" aria-label="delete" size='small' onClick={() => handleDelete(reservation.id)}>
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemIcon>
-            </ListItem>
+              <ListItem key={index} sx={{ backgroundColor: color, borderRadius: 3, mt: 1, opacity: opacity, transition: `opacity 500ms ${index * 100}ms` }}>
+                <ListItemText primary={date} secondary={`${reservation.start} - ${reservation.end}`} />
+                <ListItemIcon>
+                  <IconButton edge="end" aria-label="delete" size='small' onClick={() => handleDelete(reservation.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItemIcon>
+              </ListItem>
             )
           })
         ) : (

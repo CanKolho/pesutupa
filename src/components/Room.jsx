@@ -18,7 +18,7 @@ const Room = ({ room }) => {
   const [value, setValue] = React.useState(dayjs())
   const { reset: resetApartment, ...apartment } = useField()
   const { reset: resetStartTime, ...startTime } = useField()
-  const { reset: resetEndTime, ...endTime} = useField()
+  const { reset: resetEndTime, ...endTime } = useField()
   const dispatch = useDispatch()
   const timeOptions = generateTimeOptions()
   const isLaundryRoom = room.toLowerCase() === 'laundry'
@@ -31,7 +31,7 @@ const Room = ({ room }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    
+
     const reservation = {
       userId: user?.currentUser?.uid,
       apartment: apartment.value,
@@ -41,8 +41,8 @@ const Room = ({ room }) => {
     }
 
     isLaundryRoom
-    ? dispatch(addLaundryReservation(reservation))
-    : dispatch(addDryingReservation(reservation))
+      ? dispatch(addLaundryReservation(reservation))
+      : dispatch(addDryingReservation(reservation))
 
     handleReset()
   }

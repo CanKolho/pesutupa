@@ -6,17 +6,17 @@ const CustomTextField = ({ label, ...props }) => {
   const [helperText, setHelperText] = useState('')
 
   return (
-    <TextField 
+    <TextField
       required
-      margin="normal" 
-      variant='filled' 
-      fullWidth 
-      label={label} 
+      margin="normal"
+      variant='filled'
+      fullWidth
+      label={label}
       {...props}
       error={error}
       helperText={helperText}
       onInput={onBlur}
-      />
+    />
   )
 }
 

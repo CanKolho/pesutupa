@@ -16,7 +16,7 @@ const UserReservations = () => {
   const laundryReservations = filterAndSortReservationsByUID(useSelector(state => state.laundry), uid)
   const dryingReservations = filterAndSortReservationsByUID(useSelector(state => state.drying), uid)
   const dispatch = useDispatch()
-  
+
   React.useEffect(() => {
     dispatch(initLaundryReservations(new Date()))
     dispatch(initDryingReservations(new Date()))

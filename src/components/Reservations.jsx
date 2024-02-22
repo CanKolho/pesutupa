@@ -4,7 +4,7 @@ import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from '@mui/icons-material/Person'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
 import { useMediaQuery } from '@mui/material'
@@ -22,20 +22,20 @@ const Reservations = ({ room, date, user }) => {
   const isLaundryRoom = room.toLowerCase() === 'laundry'
   const color = isLaundryRoom ? 'rgba(173, 216, 230, 0.5)' : 'rgba(255, 228, 181, 0.5)'
   const reservations = isLaundryRoom ? useSelector(state => state.laundry) : useSelector(state => state.drying)
-  
-  const dateToCompare = new Date(date);
+
+  const dateToCompare = new Date(date)
   const filteredAndSorted = filterAndSortReservationsByDate(reservations, dateToCompare)
- 
+
   useEffect(() => {
     setOpacity(0)
     const timer = setTimeout(() => setOpacity(1), 100)
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer)
   }, [date])
 
   useEffect(() => {
     isLaundryRoom
-    ? dispatch(initLaundryReservations(date.toDate())) 
-    : dispatch(initDryingReservations(date.toDate()))
+      ? dispatch(initLaundryReservations(date.toDate()))
+      : dispatch(initDryingReservations(date.toDate()))
   }, [date, dispatch])
 
   return (

@@ -21,20 +21,20 @@ export const initLaundryReservations = (date) => {
     const todayInMilliseconds = today.getTime() // convert the date to milliseconds
     const todayTimestamp = Timestamp.fromMillis(todayInMilliseconds)
 
-    const ref = collection(db, 'laundryReservations');
-    const q = query(ref, where('date', '>=', todayTimestamp), orderBy('date'));
+    const ref = collection(db, 'laundryReservations')
+    const q = query(ref, where('date', '>=', todayTimestamp), orderBy('date'))
 
     try {
       const querySnapshot = await getDocs(q)
       const data = querySnapshot.docs.map((doc) => {
-        const docData = doc.data();
+        const docData = doc.data()
         return {
           ...docData,
           id: doc.id,
           // Convert Firestore Timestamp to milliseconds to be able to use it in the Date constructor
-          date: docData.date.toMillis(), 
-        };
-      });
+          date: docData.date.toMillis(),
+        }
+      })
       dispatch(setAllLaundryRes(data))
     }
     catch (error) {
