@@ -25,7 +25,9 @@ This is a **work in progress** of the app, created to showcase the product and i
 
 ## Usage
 - Navigate to the URL in a web browser: [Click me](https://pesutupa-sovellus.web.app/)
-- Log in.
+- Log in with test credentials:
+    - Email: test@gmail.com
+    - Password: 123456789
 - Use the calendar interface to view available slots and make reservations.
 
 © 2024 Can Kolho
