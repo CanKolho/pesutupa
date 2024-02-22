@@ -47,7 +47,7 @@ const Navigation = () => {
           const to = item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`
           const isActive = location.pathname === to
           return (
-            <Link key={item} to={item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase()}`} style={{ textDecoration: 'none', color: 'black' }}>
+            <Link key={item} to={to} style={{ textDecoration: 'none', color: 'black' }}>
               <ListItem disablePadding>
                 <ListItemButton
                   sx={{
