@@ -2,25 +2,13 @@ import { Box } from '@mui/material'
 import Button from '@mui/material/Button'
 import img from '../assets/large.jpg'
 import Features from './Features'
-//import Typed from 'typed.js';
 import { Link } from 'react-router-dom'
-//import { Typography } from '@mui/material';
 import { useUser } from '../context/userContext'
+import { useTranslation } from 'react-i18next'
 
 const Home = () => {
   const { user, logout } = useUser()
-
-  //const el = React.useRef(null);
-  //
-  //React.useEffect(() => {
-  //  const typed = new Typed(el.current, {
-  //    strings: ['CS Student', 'Martial Artist',],
-  //    typeSpeed: 100,
-  //    backSpeed: 100,
-  //    backDelay: 1000,
-  //    loop: true
-  //  });
-  //}, []);
+  const { t } = useTranslation()
 
   return (
     <>
@@ -47,10 +35,10 @@ const Home = () => {
 
           {!user ?
             <Link to='/signin' style={{ textDecoration: 'none' }}>
-              <Button variant='contained' size='large'>sign in</Button>
+              <Button variant='contained' size='large'>{t('nav.signin')}</Button>
             </Link>
             :
-            <Button variant='contained' size='large' color='warning' onClick={logout}>sign out</Button>
+            <Button variant='contained' size='large' color='warning' onClick={logout}>{t('nav.signout')}</Button>
           }
         </Box>
       </Box>

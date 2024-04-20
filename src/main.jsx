@@ -5,6 +5,7 @@ import { UserProvider } from './context/userContext.jsx'
 import { Provider } from 'react-redux'
 import store from './store'
 import './index.css'
+import './i18n.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>

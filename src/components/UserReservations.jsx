@@ -9,6 +9,7 @@ import { useUser } from '../context/userContext'
 import { initLaundryReservations } from '../reducers/laundryReducer'
 import { initDryingReservations } from '../reducers/dryingReducer'
 import { filterAndSortReservationsByUID } from '../utils'
+import { useTranslation } from 'react-i18next'
 
 const UserReservations = () => {
   const { user } = useUser()
@@ -16,6 +17,7 @@ const UserReservations = () => {
   const laundryReservations = filterAndSortReservationsByUID(useSelector(state => state.laundry), uid)
   const dryingReservations = filterAndSortReservationsByUID(useSelector(state => state.drying), uid)
   const dispatch = useDispatch()
+  const { t } = useTranslation()
 
   React.useEffect(() => {
     dispatch(initLaundryReservations(new Date()))
@@ -24,7 +26,7 @@ const UserReservations = () => {
 
   return (
     <Container component="main" maxWidth="md" sx={{ my: 15 }}>
-      <Typography variant='h5' textAlign='center'>My Reservations</Typography>
+      <Typography variant='h5' textAlign='center'>{t('reservations.title')}</Typography>
       <Grid container spacing={4} sx={{ mt: 2 }}>
         <Grid item xs={12} sm={6}><ListOfOwnReservations reservations={laundryReservations} room='Laundry' /></Grid>
         <Grid item xs={12} sm={6}><ListOfOwnReservations reservations={dryingReservations} room='Drying' /></Grid>

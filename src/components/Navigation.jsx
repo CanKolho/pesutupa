@@ -18,6 +18,8 @@ import { useLocation } from 'react-router-dom'
 import { useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '../context/userContext'
+import { useTranslation } from 'react-i18next'
+import { createRouteMapping } from '../utils'
 
 const Navigation = () => {
   const theme = useTheme()
@@ -26,10 +28,12 @@ const Navigation = () => {
   const handleDrawerOpen = () => setDrawerOpen((prevState) => !prevState)
   const navigate = useNavigate()
   const { user, logout } = useUser()
+  const { t } = useTranslation()
+  const routes = createRouteMapping(t)
 
   const navItems = user
-    ? ['Home','Reservations', 'Laundry', 'Drying']
-    : ['Home', 'Sign In', 'Sign Up']
+    ? [t('nav.home'), t('nav.reservations'), t('nav.laundry'), t('nav.drying')]
+    : [t('nav.home'), t('nav.signin'), t('nav.signup')]
 
   const handleSignOut = async () => {
     try {
@@ -44,7 +48,7 @@ const Navigation = () => {
     <Box onClick={handleDrawerOpen} sx={{ textAlign: 'center' }}>
       <List>
         {navItems.map((item) => {
-          const to = item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`
+          const to = routes[item]
           const isActive = location.pathname === to
           return (
             <Link key={item} to={to} style={{ textDecoration: 'none', color: 'black' }}>
@@ -64,7 +68,7 @@ const Navigation = () => {
 
         {user &&
             <Button sx={{ color: 'black' }} onClick={() => handleSignOut()}>
-              <Tooltip title='logout' placement="right">
+              <Tooltip title={t('nav.signout')} placement="right">
                 <LogoutIcon />
               </Tooltip>
             </Button>
@@ -97,7 +101,7 @@ const Navigation = () => {
 
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               {navItems.map((item, index) => {
-                const to = item.toLowerCase() === 'home' ? '/' : `/${item.toLowerCase().replace(' ', '')}`
+                const to = routes[item]
                 const isActive = location.pathname === to
                 return (
                   <Link key={index} to={to} style={{ textDecoration: 'none' }}>
@@ -116,7 +120,7 @@ const Navigation = () => {
 
             {user &&
             <IconButton sx={{ color: 'white', display: { xs: 'none', md: 'block' } }} onClick={() => handleSignOut()}>
-              <Tooltip title='logout' placement="right">
+              <Tooltip title={t('nav.signout')} placement="right">
                 <LogoutIcon />
               </Tooltip>
             </IconButton>
@@ -143,6 +147,7 @@ const Navigation = () => {
           sx={{
             display: { xs: 'block', md: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
+            '& .MuiBackdrop-root': { backdropFilter: 'blur(5px)' },
           }}
         >
           {drawer}

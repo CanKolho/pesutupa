@@ -4,26 +4,27 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import { Box } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { useMediaQuery } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 const Features = () => {
   const isMobile = useMediaQuery('(max-width: 800px)')
+  const { t } = useTranslation()
 
   const features = [
-
     {
       icon: <DevicesIcon color='primary' sx={{ fontSize: '3rem' }}/>,
-      title: 'Responsive',
-      description: 'Compatible on any screen size!'
+      title: t('home.title1.line1'),
+      description: t('home.title1.line2')
     },
     {
       icon: <LanguageIcon color='primary' sx={{ fontSize: '3rem' }}/>,
-      title: 'Language Support',
-      description: 'Available in multiple languages! (fi, en, sv)'
+      title: t('home.title2.line1'),
+      description: t('home.title2.line2')
     },
     {
       icon: <TrendingUpIcon color='primary' sx={{ fontSize: '3rem' }}/>,
-      title: 'Easy to use',
-      description: 'Manage reservations easily!'
+      title: t('home.title3.line1'),
+      description: t('home.title3.line2')
     }
   ]
 

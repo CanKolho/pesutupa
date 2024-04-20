@@ -12,15 +12,18 @@ import { addLaundryReservation } from '../reducers/laundryReducer'
 import { addDryingReservation } from '../reducers/dryingReducer'
 import { generateApartmentList, generateTimeOptions } from '../utils'
 import  { useUser } from '../context/userContext'
+import { useTranslation } from 'react-i18next'
 
 const Room = ({ room }) => {
   const { user } = useUser()
+  const { t } = useTranslation()
   const [value, setValue] = React.useState(dayjs())
   const { reset: resetApartment, ...apartment } = useField()
   const { reset: resetStartTime, ...startTime } = useField()
   const { reset: resetEndTime, ...endTime } = useField()
   const dispatch = useDispatch()
-  const timeOptions = generateTimeOptions()
+  const timeOptions = React.useMemo(() => generateTimeOptions(), [])
+  const apartmentList = React.useMemo(() => generateApartmentList(), [])
   const isLaundryRoom = room.toLowerCase() === 'laundry'
 
   const handleReset = () => {
@@ -54,11 +57,11 @@ const Room = ({ room }) => {
           <Grid item xs={12} sm={12} md={5}><CustomDatepicker value={value} setValue={setValue}/></Grid>
           <Grid item xs={12} sm={12} md={7}>
             <Grid container spacing={2}>
-              <Grid item xs={12}><CustomSelector label="Room Number" {...apartment} options={generateApartmentList()} autoFocus/></Grid>
-              <Grid item xs={6}><CustomSelector label="Start Time" {...startTime} options={timeOptions}/></Grid>
-              <Grid item xs={6}><CustomSelector label="End Time" {...endTime} options={timeOptions}/></Grid>
-              <Grid item xs={9}><Button type="submit" fullWidth variant="contained" onClick={handleSubmit} >reserve</Button></Grid>
-              <Grid item xs={3}><Button fullWidth variant="outlined" color='secondary' onClick={handleReset}>reset</Button></Grid>
+              <Grid item xs={12}><CustomSelector label={t('room.apartment')} {...apartment} options={apartmentList} autoFocus/></Grid>
+              <Grid item xs={6}><CustomSelector label={t('room.time.start')} {...startTime} options={timeOptions}/></Grid>
+              <Grid item xs={6}><CustomSelector label={t('room.time.end')} {...endTime} options={timeOptions}/></Grid>
+              <Grid item xs={9}><Button type="submit" fullWidth variant="contained" onClick={handleSubmit} >{t('room.button.reserve')}</Button></Grid>
+              <Grid item xs={3}><Button fullWidth variant="outlined" color='secondary' onClick={handleReset}>{t('room.button.cancel')}</Button></Grid>
             </Grid>
           </Grid>
         </Grid>

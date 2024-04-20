@@ -1,4 +1,19 @@
-export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+export const generateMonths = (t) => {
+  return [
+    t('months.january'),
+    t('months.february'),
+    t('months.march'),
+    t('months.april'),
+    t('months.may'),
+    t('months.june'),
+    t('months.july'),
+    t('months.august'),
+    t('months.september'),
+    t('months.october'),
+    t('months.november'),
+    t('months.december')
+  ]
+} 
 
 const sortByStartTime = (a, b) => {
   const [aHours, aMinutes] = a.start.split(':').map(Number)
@@ -46,4 +61,15 @@ export const generateTimeOptions = () => {
     }
   }
   return times
+}
+
+export const createRouteMapping = (t) => {
+  return {
+    [t('nav.home')]: '/',
+    [t('nav.laundry')]: `/laundry`,
+    [t('nav.drying')]: `/drying`,
+    [t('nav.reservations')]: `/reservations`,
+    [t('nav.signin')]: `/signin`,
+    [t('nav.signup')]: `/signup`
+  }
 }

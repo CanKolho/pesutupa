@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from '@mui/material/Container'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -8,20 +8,23 @@ import PersonIcon from '@mui/icons-material/Person'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Typography from '@mui/material/Typography'
 import { useMediaQuery } from '@mui/material'
-import { months } from '../utils'
+import { generateMonths} from '../utils'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { initLaundryReservations } from '../reducers/laundryReducer'
 import { initDryingReservations } from '../reducers/dryingReducer'
 import { filterAndSortReservationsByDate } from '../utils'
+import { useTranslation } from 'react-i18next'
 
 const Reservations = ({ room, date, user }) => {
   const isMobile = useMediaQuery('(max-width: 900px)')
+  const { t, i18n } = useTranslation()
   const [opacity, setOpacity] = useState(0)
   const dispatch = useDispatch()
   const isLaundryRoom = room.toLowerCase() === 'laundry'
   const color = isLaundryRoom ? 'rgba(173, 216, 230, 0.5)' : 'rgba(255, 228, 181, 0.5)'
   const reservations = isLaundryRoom ? useSelector(state => state.laundry) : useSelector(state => state.drying)
+  const months = React.useMemo(() => generateMonths(t), [i18n.language, t])
 
   const dateToCompare = new Date(date)
   const filteredAndSorted = filterAndSortReservationsByDate(reservations, dateToCompare)
@@ -56,7 +59,7 @@ const Reservations = ({ room, date, user }) => {
           ))
         ) : (
           <ListItem>
-            <ListItemText primary='No reservation' />
+            <ListItemText primary={t('reservations.noReservations')} />
           </ListItem>
         )}
       </List>

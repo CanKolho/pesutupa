@@ -1,0 +1,71 @@
+{
+  "nav": {
+    "home": "Koti",
+    "reservations": "Varaukset",
+    "laundry": "Pesuhuone",
+    "drying": "Kuivaushuone",
+    "signout": "Kirjaudu Ulos",
+    "signin": "Kirjaudu Sisään",
+    "signup": "Rekisteröidy"
+  },
+  "home": {
+    "title1": {
+      "line1": "Responsiivinen",
+      "line2": "Sopii kaikille näytöille!"
+    },
+    "title2": {
+      "line1": "Kielituki",
+      "line2": "Saatavilla useilla kielillä!"
+    },
+    "title3": {
+      "line1": "Helppokäyttöinen",
+      "line2": "Hallinnoi varauksia helposti!"
+    }
+  },
+  "reservations": {
+    "title": "Omat Varaukset",
+    "laundryHeader": "Pesuhuone",
+    "dryingHeader": "Kuivaushuone",
+    "noReservations": "Ei varauksia"
+  },
+  "room": {
+    "apartment": "Huoneiston Numero",
+    "time": {
+      "start": "Alkamisaika",
+      "end": "Päättymisaika"
+    },
+    "button": {
+      "reserve": "Varaa",
+      "cancel": "Peruuta"
+    }
+  },
+  "months": {
+    "january": "Tammikuu",
+    "february": "Helmikuu",
+    "march": "Maaliskuu",
+    "april": "Huhtikuu",
+    "may": "Toukokuu",
+    "june": "Kesäkuu",
+    "july": "Heinäkuu",
+    "august": "Elokuu",
+    "september": "Syyskuu",
+    "october": "Lokakuu",
+    "november": "Marraskuu",
+    "december": "Joulukuu"
+  },
+  "login": {
+    "title": "Kirjaudu Sisään",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "button": "Kirjaudu Sisään",
+    "google": "Kirjaudu sisään Googlella",
+    "error": {
+      "email": "Tarkista sähköpostiosoitteesi",
+      "password": "Tarkista salasanasi"
+    },
+    "links": {
+      "signup": "Eikö sinulla ole tiliä? Rekisteröidy",
+      "reset": "Unohditko salasanasi?"
+    }
+  }
+}

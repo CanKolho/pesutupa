@@ -11,14 +11,17 @@ import Typography from '@mui/material/Typography'
 import { useDispatch } from 'react-redux'
 import { deleteLaundryReservation } from '../reducers/laundryReducer'
 import { deleteDryingReservation } from '../reducers/dryingReducer'
+import { useTranslation } from 'react-i18next'
 
 const ListOfOwnReservations = ({ reservations, room }) => {
+  const { t } = useTranslation()
   const isLaundryRoom = room.toLowerCase() === 'laundry'
   const color = isLaundryRoom ? 'rgba(173, 216, 230, 0.4)' : 'rgba(255, 228, 181, 0.4)'
+  const area = isLaundryRoom ? t('reservations.laundryHeader') : t('reservations.dryingHeader')
   const reservationsExists = reservations.length > 0
   const [opacity, setOpacity] = useState(0)
   const dispatch = useDispatch()
-
+  
   const handleDelete = (id) => {
     isLaundryRoom
       ? dispatch(deleteLaundryReservation(id))
@@ -31,7 +34,7 @@ const ListOfOwnReservations = ({ reservations, room }) => {
 
   return (
     <Container component="section" maxWidth="sm" sx={{ boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', p: 1, borderRadius: 3 }}>
-      <Typography variant='h6' textAlign='center'>{room} Room</Typography>
+      <Typography variant='h6' textAlign='center'>{area}</Typography>
       <Divider />
       <List sx={{ height: '400px', overflow: 'auto', mt: 1 }}>
         {reservationsExists ? (
@@ -50,7 +53,7 @@ const ListOfOwnReservations = ({ reservations, room }) => {
           })
         ) : (
           <ListItem>
-            <ListItemText primary='No reservation' />
+            <ListItemText primary={t('reservations.noReservations')}/>
           </ListItem>
         )}
       </List>

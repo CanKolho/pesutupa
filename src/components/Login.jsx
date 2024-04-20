@@ -11,6 +11,7 @@ import Container from '@mui/material/Container'
 import GoogleIcon from '@mui/icons-material/Google'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '../context/userContext'
+import { useTranslation } from 'react-i18next'
 
 const Login = () => {
   const [email, setEmail] = React.useState('')
@@ -20,6 +21,7 @@ const Login = () => {
   const [helperTextPassword, setHelperTextPassword] = React.useState('')
   const navigate = useNavigate()
   const { loginWithEmailAndPassword, signUpWithGoogle } = useUser()
+  const { t } = useTranslation()
 
   const handleSignIn = async (event) => {
     event.preventDefault()
@@ -28,8 +30,8 @@ const Login = () => {
       navigate('/reservations')
     } catch (error) {
       setError(true)
-      setHelperTextEmail('Please check your email address')
-      setHelperTextPassword('Please check your password')
+      setHelperTextEmail(t('login.error.email'))
+      setHelperTextPassword(t('login.error.password'))
     }
   }
 
@@ -47,7 +49,7 @@ const Login = () => {
     <Container component="main" maxWidth="xs" sx={{ mt: 15 }}>
       <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <Avatar sx={{ m: 1, bgcolor: 'secondary.light' }}><LockOutlinedIcon /></Avatar>
-        <Typography component="h1" variant="h5">Sign in</Typography>
+        <Typography component="h1" variant="h5">{t('nav.signin')}</Typography>
         <Box component="form" sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -55,7 +57,7 @@ const Login = () => {
             fullWidth
             value={email}
             id="email"
-            label="Email Address"
+            label={t('login.email')}
             name="email"
             autoComplete="email"
             autoFocus
@@ -69,7 +71,7 @@ const Login = () => {
             fullWidth
             value={password}
             name="password"
-            label="Password"
+            label={t('login.password')}
             type="password"
             id="password"
             error={error}
@@ -84,7 +86,7 @@ const Login = () => {
             sx={{ mt: 3, mb: 2 }}
             onClick={handleSignIn}
           >
-            Sign In
+            {t('nav.signin')}
           </Button>
           <Button
             type="submit"
@@ -95,18 +97,18 @@ const Login = () => {
           >
             <GoogleIcon />
             <Typography variant="button" sx={{ ml: 1 }}>
-              Sign In with Google
+              {t('login.google')}
             </Typography>
           </Button>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Forgot password?
+                {t('login.links.reset')}
               </Link>
             </Grid>
             <Grid item>
               <Link href="#" variant="body2">
-                {'Don\'t have an account? Sign Up'}
+                {t('login.links.signup')}
               </Link>
             </Grid>
           </Grid>
