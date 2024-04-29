@@ -6,7 +6,8 @@
     "drying": "Torkrum",
     "signout": "Logga ut",
     "signin": "Logga in",
-    "signup": "Registrera dig"
+    "signup": "Registrera dig",
+    "changeLang": "NOT_TRANSLATED"
   },
   "home": {
     "title1": {
@@ -52,6 +53,22 @@
     "links": {
       "signup": "Har du inget konto? Registrera dig",
       "reset": "Glömt ditt lösenord?"
+    }
+  },
+  "signup": {
+    "title": "Registrera dig",
+    "email": "E-post",
+    "password": "Lösenord",
+    "button": "Registrera",
+    "pwStrength": "NOT_TRANSLATED",
+    "passwordStrength": {
+      "weak": "NOT_TRANSLATED",
+      "medium": "NOT_TRANSLATED",
+      "good": "NOT_TRANSLATED",
+      "strong": "NOT_TRANSLATED"
+    },
+    "links": {
+      "login": "NOT_TRANSLATED"
     }
   },
   "months": {

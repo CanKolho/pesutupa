@@ -3,15 +3,25 @@ import { Box } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
-import Link from '@mui/material/Link'
+import MuiLink from '@mui/material/Link'
+import { Link } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '../context/userContext'
+import { useTheme } from '@mui/material/styles'
+import { useTranslation } from 'react-i18next'
 
-const strengthLabes = ['Weak', 'Medium', 'Good', 'Strong']
+const strengthLabes = [
+  'signup.passwordStrength.weak',
+  'signup.passwordStrength.medium',
+  'signup.passwordStrength.good',
+  'signup.passwordStrength.strong'
+]
+
+// TODO: translation namespace siistimmäksi
 
 const SignUp = () => {
   const [email, setEmail] = useState('')
@@ -22,6 +32,8 @@ const SignUp = () => {
   const [passwordStrength, setPasswordStrength] = useState('')
   const navigate = useNavigate()
   const { signUpWithEmailAndPassword } = useUser()
+  const theme = useTheme()
+  const { t } = useTranslation()
 
   const checkPasswordStrength = (password) => {
     let strength = -1
@@ -52,14 +64,14 @@ const SignUp = () => {
   }
 
   const getPasswordStrengthStyle = () => {
-    switch (passwordStrength) {
-    case 'Weak':
+    switch (t(passwordStrength)) {
+    case t('signup.passwordStrength.weak'):
       return { bgcolor: 'error.main', width: '25%' }
-    case 'Medium':
+    case t('signup.passwordStrength.medium'):
       return { bgcolor: 'warning.light', width: '50%' }
-    case 'Good':
+    case t('signup.passwordStrength.good'):
       return { bgcolor: 'success.light', width: '75%' }
-    case 'Strong':
+    case t('signup.passwordStrength.strong'):
       return { bgcolor: 'success.main', width: '100%' }
     default:
       return { width: '0%' }
@@ -69,8 +81,8 @@ const SignUp = () => {
   return (
     <Container component="main" maxWidth="xs" sx={{ mt: 15 }}>
       <Box sx={{ marginTop: 8, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Avatar sx={{ m: 1, bgcolor: 'primary.light' }}><AccountCircleIcon /></Avatar>
-        <Typography component="h1" variant="h5">Sign Up</Typography>
+        <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}><AccountCircleIcon /></Avatar>
+        <Typography component="h1" variant="h5">{t('signup.title')}</Typography>
         <Box component="form" sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -78,7 +90,7 @@ const SignUp = () => {
             fullWidth
             value={email}
             id="email"
-            label="Email Address"
+            label={t('signup.email')}
             name="email"
             autoComplete="email"
             autoFocus
@@ -92,7 +104,7 @@ const SignUp = () => {
             fullWidth
             value={password}
             name="password"
-            label="Password"
+            label={t('signup.password')}
             type="password"
             id="password"
             error={error}
@@ -101,35 +113,27 @@ const SignUp = () => {
             onChange={(event) => handlePasswordChange(event)}
           />
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
-            <Box sx={{
-              ...getPasswordStrengthStyle(),
-              display: 'flex',
-              alignItems: 'center',
-              my: 1,
-              height: 6,
-              borderRadius: 1,
-              transition: '.4s',
-            }}>
+            <Box sx={{ backgroundColor: theme.palette.grey[200], width: '100%',height: 6, borderRadius: 2 }}>
+              <Box sx={{ ...getPasswordStrengthStyle(), height: '100%', transition: '.4s' }} />
             </Box>
-            {passwordStrength && (
+            {passwordStrength &&
               <Typography gutterBottom>
-                Password strength: {passwordStrength}
-              </Typography>
-            )}
+                {t('signup.pwStrength')}{': '} {t(passwordStrength)}
+              </Typography>}
           </Box>
           <Button
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ mt: 3, mb: 2, textTransform: 'capitalize' }}
             onClick={handleSignUp}
           >
-            Sign Up
+            {t('signup.button')}
           </Button>
           <Grid container>
             <Grid item>
-              <Link href="#" variant="body2">
-                {'Already have an account? Sign In'}
+              <Link to='/signin' style={{ textDecoration: 'none', color: 'black' }}>
+                <MuiLink variant="body2">{t('signup.links.login')}</MuiLink>
               </Link>
             </Grid>
           </Grid>

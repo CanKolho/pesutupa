@@ -9,4 +9,4 @@ const LinearLoader = () => {
   )
 }
 
-export default LinearLoader;
+export default LinearLoader

@@ -21,7 +21,7 @@ const ListOfOwnReservations = ({ reservations, room }) => {
   const reservationsExists = reservations.length > 0
   const [opacity, setOpacity] = useState(0)
   const dispatch = useDispatch()
-  
+
   const handleDelete = (id) => {
     isLaundryRoom
       ? dispatch(deleteLaundryReservation(id))

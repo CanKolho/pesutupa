@@ -6,7 +6,8 @@
     "drying": "Drying",
     "signout": "Sign Out",
     "signin": "Sign In",
-    "signup": "Sign Up"
+    "signup": "Sign Up",
+    "changeLang": "Change Language"
   },
   "home": {
     "title1": {
@@ -52,6 +53,22 @@
     "links": {
       "signup": "Don't have an account? Sign up",
       "reset": "Forgot your password?"
+    }
+  },
+  "signup": {
+    "title": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "button": "Sign Up",
+    "pwStrength": "Password Strength",
+    "passwordStrength": {
+      "weak": "Weak",
+      "medium": "Medium",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "links": {
+      "login": "Already have an account? Sign In"
     }
   },
   "months": {

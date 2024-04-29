@@ -6,7 +6,8 @@
     "drying": "Kuivaushuone",
     "signout": "Kirjaudu Ulos",
     "signin": "Kirjaudu Sisään",
-    "signup": "Rekisteröidy"
+    "signup": "Rekisteröidy",
+    "changeLang": "Vaihda kieltä"
   },
   "home": {
     "title1": {
@@ -64,8 +65,25 @@
       "password": "Tarkista salasanasi"
     },
     "links": {
+      "login": "Onko sinulla käyttäjä? Kirjaudu sisään",
       "signup": "Eikö sinulla ole tiliä? Rekisteröidy",
       "reset": "Unohditko salasanasi?"
+    }
+  },
+  "signup": {
+    "title": "Rekisteröidy",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "button": "Rekisteröidy",
+    "pwStrength": "Salasanan Vahvuus",
+    "passwordStrength": {
+      "weak": "Heikko",
+      "medium": "Kohtalainen",
+      "good": "Hyvä",
+      "strong": "Vahva"
+    },
+    "links": {
+      "login": "Onko sinulla käyttäjä? Kirjaudu sisään"
     }
   }
 }

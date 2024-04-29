@@ -45,8 +45,9 @@ const Features = () => {
           alignItems: 'center',
           gap: 1,
           padding: 2,
-          maxWidth: 300,
+          maxWidth: 160,
           margin: '0 auto',
+          textAlign: 'center'
         }}>
           {feature.icon}
           <Typography variant='h5'>{feature.title}</Typography>

@@ -35,10 +35,22 @@ const Home = () => {
 
           {!user ?
             <Link to='/signin' style={{ textDecoration: 'none' }}>
-              <Button variant='contained' size='large'>{t('nav.signin')}</Button>
+              <Button variant='contained' size='large' sx={{
+                backgroundImage: 'linear-gradient(to bottom, #0072ff, #00c6ff)',
+                textTransform: 'capitalize',
+                boxShadow: 'none'
+              }}>
+                {t('nav.signin')}
+              </Button>
             </Link>
             :
-            <Button variant='contained' size='large' color='warning' onClick={logout}>{t('nav.signout')}</Button>
+            <Button variant='contained' size='large' onClick={logout} sx={{
+              backgroundImage: 'linear-gradient(to right, #ff9800, #ffc107)',
+              textTransform: 'capitalize',
+              boxShadow: 'none'
+            }}>
+              {t('nav.signout')}
+            </Button>
           }
         </Box>
       </Box>

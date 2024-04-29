@@ -13,7 +13,7 @@ export const generateMonths = (t) => {
     t('months.november'),
     t('months.december')
   ]
-} 
+}
 
 const sortByStartTime = (a, b) => {
   const [aHours, aMinutes] = a.start.split(':').map(Number)
@@ -66,10 +66,10 @@ export const generateTimeOptions = () => {
 export const createRouteMapping = (t) => {
   return {
     [t('nav.home')]: '/',
-    [t('nav.laundry')]: `/laundry`,
-    [t('nav.drying')]: `/drying`,
-    [t('nav.reservations')]: `/reservations`,
-    [t('nav.signin')]: `/signin`,
-    [t('nav.signup')]: `/signup`
+    [t('nav.laundry')]: '/laundry',
+    [t('nav.drying')]: '/drying',
+    [t('nav.reservations')]: '/reservations',
+    [t('nav.signin')]: '/signin',
+    [t('nav.signup')]: '/signup'
   }
 }
