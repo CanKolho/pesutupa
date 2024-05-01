@@ -7,7 +7,7 @@
     "signout": "Logga ut",
     "signin": "Logga in",
     "signup": "Registrera dig",
-    "changeLang": "NOT_TRANSLATED"
+    "changeLang": "Byt Språk"
   },
   "home": {
     "title1": {
@@ -60,15 +60,15 @@
     "email": "E-post",
     "password": "Lösenord",
     "button": "Registrera",
-    "pwStrength": "NOT_TRANSLATED",
+    "pwStrength": "Lösenordsstyrka",
     "passwordStrength": {
-      "weak": "NOT_TRANSLATED",
-      "medium": "NOT_TRANSLATED",
-      "good": "NOT_TRANSLATED",
-      "strong": "NOT_TRANSLATED"
+      "weak": "Svag",
+      "medium": "Medel",
+      "good": "Bra",
+      "strong": "Stark"
     },
     "links": {
-      "login": "NOT_TRANSLATED"
+      "login": "Har du redan ett konto? Logga in"
     }
   },
   "months": {
