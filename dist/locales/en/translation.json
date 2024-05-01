@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "reservations": "Reservations",
+    "laundry": "Laundry",
+    "drying": "Drying",
+    "signout": "Sign Out",
+    "signin": "Sign In",
+    "signup": "Sign Up",
+    "changeLang": "Change Language"
+  },
+  "home": {
+    "title1": {
+      "line1": "Responsive",
+      "line2": "Compatible on any screen size!"
+    },
+    "title2": {
+      "line1": "Language Support",
+      "line2": "Available in multiple languages!"
+    },
+    "title3": {
+      "line1": "Easy to use",
+      "line2": "Manage reservations easily!"
+    }
+  },
+  "reservations": {
+    "title": "My Reservations",
+    "laundryHeader": "Laundry Room",
+    "dryingHeader": "Drying Room",
+    "noReservations": "No reservations"
+  },
+  "room": {
+    "apartment": "Apartment Number",
+    "time": {
+      "start": "Start Time",
+      "end": "End Time"
+    },
+    "button": {
+      "reserve": "Reserve",
+      "cancel": "Cancel"
+    }
+  },
+  "login": {
+    "title": "Sign In",
+    "email": "Email",
+    "password": "Password",
+    "button": "Sign In",
+    "google": "Sign in with Google",
+    "error": {
+      "email": "Please check your email address",
+      "password": "Please check your password"
+    },
+    "links": {
+      "signup": "Don't have an account? Sign up",
+      "reset": "Forgot your password?"
+    }
+  },
+  "signup": {
+    "title": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "button": "Sign Up",
+    "pwStrength": "Password Strength",
+    "passwordStrength": {
+      "weak": "Weak",
+      "medium": "Medium",
+      "good": "Good",
+      "strong": "Strong"
+    },
+    "links": {
+      "login": "Already have an account? Sign In"
+    }
+  },
+  "months": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Hem",
+    "reservations": "Reservationer",
+    "laundry": "Tvättstuga",
+    "drying": "Torkrum",
+    "signout": "Logga ut",
+    "signin": "Logga in",
+    "signup": "Registrera dig",
+    "changeLang": "Byt Språk"
+  },
+  "home": {
+    "title1": {
+      "line1": "Responsiv",
+      "line2": "Fungerar på alla skärmstorlekar!"
+    },
+    "title2": {
+      "line1": "Språkstöd",
+      "line2": "Tillgänglig på flera språk!"
+    },
+    "title3": {
+      "line1": "Lätt att använda",
+      "line2": "Hantera reservationer enkelt!"
+    }
+  },
+  "reservations": {
+    "title": "Mina reservationer",
+    "laundryHeader": "Tvättstuga",
+    "dryingHeader": "Torkrum",
+    "noReservations": "Inga reservationer"
+  },
+  "room": {
+    "apartment": "Lägenhetsnummer",
+    "time": {
+      "start": "Starttid",
+      "end": "Sluttid"
+    },
+    "button": {
+      "reserve": "Reservera",
+      "cancel": "Avboka"
+    }
+  },
+  "login": {
+    "title": "Logga In",
+    "email": "E-post",
+    "password": "Lösenord",
+    "button": "Logga In",
+    "google": "Logga in med Google",
+    "error": {
+      "email": "Vänligen kontrollera din e-postadress",
+      "password": "Vänligen kontrollera ditt lösenord"
+    },
+    "links": {
+      "signup": "Har du inget konto? Registrera dig",
+      "reset": "Glömt ditt lösenord?"
+    }
+  },
+  "signup": {
+    "title": "Registrera dig",
+    "email": "E-post",
+    "password": "Lösenord",
+    "button": "Registrera",
+    "pwStrength": "Lösenordsstyrka",
+    "passwordStrength": {
+      "weak": "Svag",
+      "medium": "Medel",
+      "good": "Bra",
+      "strong": "Stark"
+    },
+    "links": {
+      "login": "Har du redan ett konto? Logga in"
+    }
+  },
+  "months": {
+    "january": "Januari",
+    "february": "Februari",
+    "march": "Mars",
+    "april": "April",
+    "may": "Maj",
+    "june": "Juni",
+    "july": "Juli",
+    "august": "Augusti",
+    "september": "September",
+    "october": "Oktober",
+    "november": "November",
+    "december": "December"
+  }
+}
