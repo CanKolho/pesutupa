@@ -21,8 +21,6 @@ const strengthLabes = [
   'signup.passwordStrength.strong'
 ]
 
-// TODO: translation namespace siistimmäksi
-
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -65,13 +63,13 @@ const SignUp = () => {
 
   const getPasswordStrengthStyle = () => {
     switch (t(passwordStrength)) {
-    case t('signup.passwordStrength.weak'):
+    case t(strengthLabes[0]): // weak
       return { bgcolor: 'error.main', width: '25%' }
-    case t('signup.passwordStrength.medium'):
+    case t(strengthLabes[1]): // medium
       return { bgcolor: 'warning.light', width: '50%' }
-    case t('signup.passwordStrength.good'):
+    case t(strengthLabes[2]): // good
       return { bgcolor: 'success.light', width: '75%' }
-    case t('signup.passwordStrength.strong'):
+    case t(strengthLabes[3]): // strong
       return { bgcolor: 'success.main', width: '100%' }
     default:
       return { width: '0%' }
