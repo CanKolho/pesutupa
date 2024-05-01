@@ -112,7 +112,7 @@ const SignUp = () => {
           />
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
             <Box sx={{ backgroundColor: theme.palette.grey[200], width: '100%',height: 6, borderRadius: 2 }}>
-              <Box sx={{ ...getPasswordStrengthStyle(), height: '100%', transition: '.4s' }} />
+              <Box sx={{ ...getPasswordStrengthStyle(), height: '100%', transition: '.4s',  borderRadius: 'inherit' }} />
             </Box>
             {passwordStrength &&
               <Typography gutterBottom>
